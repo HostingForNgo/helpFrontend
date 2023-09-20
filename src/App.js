@@ -104,6 +104,7 @@ function App() {
 
   useEffect(() => {
     axios.get(apiLink+`/gallery/pagination?page=${page}&limit=4`).then(res => {
+      console.log(res)
       setMaxPage(Math.ceil(res.data["x-total-count"] / 4));
       setImages(res.data.finalData);
     })

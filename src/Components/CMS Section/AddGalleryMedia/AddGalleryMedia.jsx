@@ -48,7 +48,10 @@ export default function AddGalleryMedia() {
                 <Box mb={"10px"}>
                     <Button onClick={() => {
                         let obj = { title, date, description, images };
-                        axios.post(apiLink+"/gallery", obj)
+                        if(title.length===0) return alert("Fill Title")
+                        if(date.length===0) return alert("Fill date")
+                        if(description.length===0) return alert("Fill description")
+                        axios.post(apiLink+"/gallery", obj).then((res)=>{console.log(res)}).catch((err)=>{console.log(err)})
                         // axios.post("https://futuristic-unexpected-citrine.glitch.me/gallery", obj)
                         console.log(obj);
                         setTitle("");
