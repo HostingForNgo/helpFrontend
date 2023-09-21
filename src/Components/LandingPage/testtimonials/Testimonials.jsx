@@ -16,7 +16,7 @@ export default function Testimonals() {
   const [wid3, setWid3] = useState(10);
   const [wid4, setWid4] = useState(10);
   const [wid5, setWid5] = useState(10);
-  const {apiLink} = useContext(Context)
+  const { apiLink } = useContext(Context)
   const widArr = [wid1, wid2, wid3, wid4, wid5];
   const setWidArr = [setWid1, setWid2, setWid3, setWid4, setWid5];
   const [testimonialData, setTestimonialData] = useState([]);
@@ -47,9 +47,9 @@ export default function Testimonals() {
   });
 
   useEffect(() => {
-    axios.get(apiLink+"/testimonials").then((res) => {
+    axios.get(apiLink + "/testimonials").then((res) => {
       let temp = res.data;
-      
+
       if (res.data.length <= 10) {
         setCoverTextMain(temp[0].testimonial);
         setTestimonialData(temp);
@@ -80,7 +80,7 @@ export default function Testimonals() {
     //   setTestimonialData(random);
     //   setDownLeft(arr[0]);
   }, []);
-  return ( testimonialData.length>=1 &&
+  return (testimonialData.length >= 1 &&
     <Box
       bgcolor={"white"}
       sx={{
@@ -356,13 +356,13 @@ export default function Testimonals() {
                 width={`${100 * testimonialData.length}%`}
               >
                 {testimonialData.map((i, index) => (
-                <MobileViewTestimonialsCircle
-                  img={i.image}
-                  name={i.name}
-                  company={i.company}
-                  width={`${Math.floor(100 / testimonialData.length)}`}
-                />
-              ))}
+                  <MobileViewTestimonialsCircle
+                    img={i.image}
+                    name={i.name}
+                    company={i.company}
+                    width={`${Math.floor(100 / testimonialData.length)}`}
+                  />
+                ))}
                 {/* <MobileViewTestimonialsCircle
                   width={`${Math.floor(100 / testimonialData.length)}`}
                 />
@@ -375,7 +375,7 @@ export default function Testimonals() {
               </Box>
             </Box>
             <Box
-              display={marginRightCarousel == -(100 * testimonialData.length -100) ? "none" : "flex"}
+              display={marginRightCarousel == -(100 * testimonialData.length - 100) ? "none" : "flex"}
               width={"15%"}
               height={"100%"}
               position={"absolute"}
