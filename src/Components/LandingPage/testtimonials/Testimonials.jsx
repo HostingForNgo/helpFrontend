@@ -337,7 +337,7 @@ export default function Testimonals() {
                 style={{
                   height: "100%",
                   color: "black",
-                  width: "100%",
+                  minWidth: "40px",
                   justifyContent: "center",
                   alignItems: "center",
                   border: "0",
@@ -355,20 +355,120 @@ export default function Testimonals() {
                 height={"100%"}
                 width={`${100 * testimonialData.length}%`}
               >
+                {testimonialData.map((i, index) => (
                 <MobileViewTestimonialsCircle
-                  width={`${100 / testimonialData.length}`}
+                  img={i.image}
+                  name={i.name}
+                  company={i.company}
+                  width={`${Math.floor(100 / testimonialData.length)}`}
+                />
+              ))}
+                {/* <MobileViewTestimonialsCircle
+                  width={`${Math.floor(100 / testimonialData.length)}`}
                 />
                 <MobileViewTestimonialsCircle
-                  width={`${100 / testimonialData.length}`}
+                  width={`${Math.floor(100 / testimonialData.length)}`}
                 />
                 <MobileViewTestimonialsCircle
-                  width={`${100 / testimonialData.length}`}
+                  width={`${Math.floor(100 / testimonialData.length)}`}
+                /> */}
+              </Box>
+            </Box>
+            <Box
+              display={marginRightCarousel == -(100 * testimonialData.length -100) ? "none" : "flex"}
+              width={"15%"}
+              height={"100%"}
+              position={"absolute"}
+              right={"-5%"}
+            >
+              <Button
+                onClick={() => {
+                  let temp = marginRightCarousel - 100;
+                  let index = Math.abs(temp / 100);
+                  if (temp == -500) {
+                    setMarginRightCarousel(0);
+                    setCoverTextMain(testimonialData[0].testimonial);
+                    return;
+                  }
+                  setCoverTextMain(testimonialData[index].testimonial);
+                  setMarginRightCarousel(temp);
+                }}
+                style={{
+                  height: "100%",
+                  color: "black",
+                  minWidth: "40px",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  border: "0",
+                  background: "rgb(223 223 223)",
+                }}
+              >
+                <KeyboardArrowRightIcon
+                  sx={{ width: "100%", color: "black" }}
+                />
+              </Button>
+            </Box>
+          </Box>
+          {/* <Box
+            bgcolor={"#efefef"}
+            position={"relative"}
+            width={"80%"}
+            height={"100%"}
+            display={["flex", "flex", "none", "none"]}
+            justifyContent={"center"}
+          >
+            <Box
+              display={marginRightCarousel == 0 ? "none" : "flex"}
+              minWidth={"15%"}
+              height={"100%"}
+              position={"absolute"}
+              left={"-5%"}
+              overflow={"hidden"}
+            >
+              <Button
+                onClick={() => {
+                  let temp = marginRightCarousel + 100;
+                  let index = Math.abs(temp / 100);
+                  if (temp == -500) {
+                    setMarginRightCarousel(0);
+                    setCoverTextMain(testimonialData[0].testimonial);
+                    return;
+                  }
+                  setCoverTextMain(testimonialData[index].testimonial);
+                  setMarginRightCarousel(temp);
+                }}
+                sx={{
+                  height: "100%",
+                  color: "black",
+                  width: "20px",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  border: "0",
+                  background: "rgb(223 223 223)",
+                  position:"absolute",
+                  left:"-5%",
+                  display:marginRightCarousel == 0 ? "none" : "flex"
+                }}
+              >
+                <ChevronLeftIcon sx={{ width: "100%", color: "black" }} />
+              </Button>
+            </Box>
+            <Box width={"80%"} height={"100%"} overflow={"hidden"}>
+              <Box
+                sx={{ transition: ".5s" }}
+                marginLeft={`${marginRightCarousel}%`}
+                display={"flex"}
+                height={"100%"}
+                width={`${100 * testimonialData.length}%`}
+              >
+                <MobileViewTestimonialsCircle
+                  width={`${Math.floor(100 / testimonialData.length)}`}
                 />
                 <MobileViewTestimonialsCircle
-                  width={`${100 / testimonialData.length}`}
+                  width={`${Math.floor(100 / testimonialData.length)}`}
                 />
                 <MobileViewTestimonialsCircle
-                  width={`${100 / testimonialData.length}`}
+                  width={`${Math.floor(100 / testimonialData.length)}`}
                 />
               </Box>
             </Box>
@@ -406,7 +506,7 @@ export default function Testimonals() {
                 />
               </Button>
             </Box>
-          </Box>
+          </Box> */}
         </Box>
       </Box>
     </Box>
